@@ -3,11 +3,8 @@ package main
 import (
     "log"
     "os"
-    // "fmt"
     "github.com/line/line-bot-sdk-go/linebot"
     "github.com/totori0908/streak-notification/modules"
-    // "github.com/totori0908/streak-notification/modules/StreakChecker"
-    // "./modules"
 )
 
 func main() {
@@ -24,10 +21,11 @@ func main() {
 
     accepted := StreakChecker.IsAcceptedToday()
 
-    text := "OK!"
-    if (accepted == false) {
-        text = "まだstreakつないでないよ"
+    if (accepted) {
+        return
     }
+
+    text := "まだstreakつないでないよ!"
 
     // テキストメッセージを生成する
     message := linebot.NewTextMessage(text)
