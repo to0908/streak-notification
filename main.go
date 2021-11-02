@@ -3,8 +3,11 @@ package main
 import (
     "log"
     "os"
-
+    "fmt"
     "github.com/line/line-bot-sdk-go/linebot"
+    "github.com/totori0908/streak-notification/modules"
+    // "github.com/totori0908/streak-notification/modules/StreakChecker"
+    // "./modules"
 )
 
 func main() {
@@ -18,8 +21,16 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
+
+    accepted := StreakChecker.IsAcceptedToday()
+
+    text := "OK!"
+    if (accepted == false) {
+        text = "まだstreakつないでないよ"
+    }
+
     // テキストメッセージを生成する
-    message := linebot.NewTextMessage("hello, world")
+    message := linebot.NewTextMessage(text)
     // テキストメッセージを友達登録しているユーザー全員に配信する
     if _, err := bot.BroadcastMessage(message).Do(); err != nil {
         log.Fatal(err)

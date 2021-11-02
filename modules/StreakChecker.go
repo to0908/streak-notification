@@ -30,7 +30,7 @@ type StreakRank struct {
     Rank   int `json:"rank"`
 }
 
-func isAcceptedToday () bool {
+func IsAcceptedToday () bool {
 	unixTime := getTimeUnix()
 	// fmt.Println(unixTime)
 
