@@ -8,6 +8,15 @@ import (
 )
 
 func main() {
+
+    accepted := StreakChecker.IsAcceptedToday()
+
+    if (accepted) {
+        return
+    }
+
+    text := "まだstreakつないでないよ!"
+
     // LINE Botクライアント生成する
     // BOT にはチャネルシークレットとチャネルトークンを環境変数から読み込み引数に渡す
     bot, err := linebot.New(
@@ -18,15 +27,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    accepted := StreakChecker.IsAcceptedToday()
-
-    if (accepted) {
-        return
-    }
-
-    text := "まだstreakつないでないよ!"
-
+    
     // テキストメッセージを生成する
     message := linebot.NewTextMessage(text)
     // テキストメッセージを友達登録しているユーザー全員に配信する

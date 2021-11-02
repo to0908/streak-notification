@@ -1,5 +1,4 @@
 package StreakChecker
-// package main
 
 import (
 	"encoding/json"
@@ -12,16 +11,16 @@ import (
 )
 
 type Submission struct {
-    // Id				int           `json:"id"`
+	// Id				int           `json:"id"`
 	Epoch_second  	int           `json:"epoch_second"`
 	// Problem_id    	string        `json:"problem_id"`
 	// Contest_id    	string        `json:"contest_id"`
 	// User_id			string        `json:"user_id"`
-    // Language      	string        `json:"language"`
-    // Point         	float64       `json:"point"`
-    // Length        	int           `json:"length"`
-    Result        	string        `json:"result"` // must "AC"
-    // Exection_time 	int           `json:"execution_time"`
+	// Language      	string        `json:"language"`
+	// Point         	float64       `json:"point"`
+	// Length        	int           `json:"length"`
+	Result        	string        `json:"result"` // must "AC"
+	// Exection_time 	int           `json:"execution_time"`
 }
 
 
@@ -32,49 +31,36 @@ type StreakRank struct {
 
 func IsAcceptedToday () bool {
 	unixTime := getTimeUnix()
-	// fmt.Println(unixTime)
-
-    submission := getSubmissions(unixTime)
-    for _, data := range(submission) {
-        fmt.Println(data.Epoch_second, data.Result)
+	submission := getSubmissions(unixTime)
+	for _, data := range(submission) {
+		fmt.Println(data.Epoch_second, data.Result)
 		if data.Result == "AC" {
 			return true
 		}
-    }
+	}
 	return false
 }
-
-// func main() {
-
-// 	ok := isAcceptedToday()
-// 	fmt.Println(ok)
-
-//     // streak := getStreakRank()
-//     // fmt.Println(streak.Count, streak.Rank)
-
-// }
 
 func getTimeUnix() int {
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("JST", +9*60*60)
 	nowJST := nowUTC.In(jst)
 	today := time.Date(nowJST.Year(), nowJST.Month(), nowJST.Day(), 0, 0, 0, 0, jst)
-	// fmt.Println(today)
 	unix := today.Unix()
 	return int(unix)
 }
 
 func getSubmissions(unixTime int) []Submission {
 	url := "https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user=totori0908&from_second=" + strconv.Itoa(unixTime)
-    jsonStr := httpGetStr(url)
-    submissions := formatSubmission(jsonStr)
-    return submissions
+	jsonStr := httpGetStr(url)
+	submissions := formatSubmission(jsonStr)
+	return submissions
 }
 
 func getStreakRank() *StreakRank {
-    jsonStr := httpGetStr("https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=totori0908")
-    streak := formatStreakRank(jsonStr)
-    return streak
+	jsonStr := httpGetStr("https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=totori0908")
+	streak := formatStreakRank(jsonStr)
+	return streak
 }
 
 func httpGetStr(url string) string {
