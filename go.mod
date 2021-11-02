@@ -1,5 +1,6 @@
 module github.com/totori0908/streak-notification
 
-go 1.13
+// +heroku goVersion go1.17
+go 1.17
 
-require github.com/line/line-bot-sdk-go/v7 v7.11.0 // indirect
+require github.com/line/line-bot-sdk-go v7.8.0+incompatible
