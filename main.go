@@ -3,7 +3,7 @@ package main
 import (
     "log"
     "os"
-    "fmt"
+    // "fmt"
     "github.com/line/line-bot-sdk-go/linebot"
     "github.com/totori0908/streak-notification/modules"
     // "github.com/totori0908/streak-notification/modules/StreakChecker"
