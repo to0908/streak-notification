@@ -2,7 +2,7 @@ package StreakChecker
 
 import (
 	"encoding/json"
-	"fmt"
+	// "fmt"
 	"io"
 	"strconv"
 	"log"
