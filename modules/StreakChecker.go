@@ -33,7 +33,6 @@ func IsAcceptedToday () bool {
 	unixTime := getTimeUnix()
 	submission := getSubmissions(unixTime)
 	for _, data := range(submission) {
-		fmt.Println(data.Epoch_second, data.Result)
 		if data.Result == "AC" {
 			return true
 		}
