@@ -11,16 +11,16 @@ import (
 )
 
 type Submission struct {
-	Id				int			`json:"id"`
-	Epoch_second	int			`json:"epoch_second"`
-	Problem_id		string		`json:"problem_id"`
-	Contest_id    	string		`json:"contest_id"`
-	User_id			string		`json:"user_id"`
-	Language      	string		`json:"language"`
-	Point         	float64		`json:"point"`
-	Length        	int			`json:"length"`
+	// Id				int			`json:"id"`
+	// Epoch_second	int			`json:"epoch_second"`
+	// Problem_id		string		`json:"problem_id"`
+	// Contest_id    	string		`json:"contest_id"`
+	// User_id			string		`json:"user_id"`
+	// Language      	string		`json:"language"`
+	// Point         	float64		`json:"point"`
+	// Length        	int			`json:"length"`
 	Result        	string		`json:"result"` // must "AC"
-	Exection_time 	int			`json:"execution_time"`
+	// Exection_time 	int			`json:"execution_time"`
 }
 
 
